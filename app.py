@@ -23,7 +23,7 @@ def erosion(test_img, element_size, kernel_size):
         kernel = cv2.getStructuringElement(cv2.MORPH_DIAMOND, (kernel_size, kernel_size))
     result = cv2.erode(test_img, kernel)
     st.header("Erosion")
-    st.image(result)
+    st.image(result, use_container_width=True)
     
 
 def dilation(test_img, element_size, kernel_size):
@@ -38,7 +38,7 @@ def dilation(test_img, element_size, kernel_size):
         kernel = cv2.getStructuringElement(cv2.MORPH_DIAMOND, (kernel_size, kernel_size))
     result = cv2.dilate(test_img, kernel)
     st.header("Dilation")
-    st.image(result)
+    st.image(result, use_container_width=True)
 
 def opening(test_img, element_size, kernel_size):
     global result
@@ -52,7 +52,7 @@ def opening(test_img, element_size, kernel_size):
         kernel = cv2.getStructuringElement(cv2.MORPH_DIAMOND, (kernel_size, kernel_size))
     result = cv2.morphologyEx(test_img, cv2.MORPH_OPEN, kernel)
     st.header("Opening")
-    st.image(result)
+    st.image(result, use_container_width=True)
 
 def closing(test_img, element_size, kernel_size):
     global result
@@ -66,7 +66,7 @@ def closing(test_img, element_size, kernel_size):
         kernel = cv2.getStructuringElement(cv2.MORPH_DIAMOND, (kernel_size, kernel_size))
     result = cv2.morphologyEx(test_img, cv2.MORPH_CLOSE, kernel)
     st.header("Closing")
-    st.image(result)
+    st.image(result, use_container_width=True)
 
 def gradient(test_img, element_size, kernel_size):
     global result
@@ -80,7 +80,7 @@ def gradient(test_img, element_size, kernel_size):
         kernel = cv2.getStructuringElement(cv2.MORPH_DIAMOND, (kernel_size, kernel_size))
     result = cv2.morphologyEx(test_img, cv2.MORPH_GRADIENT, kernel)
     st.header("Gradient")
-    st.image(result)
+    st.image(result, use_container_width=True)
             
 
 
@@ -147,7 +147,7 @@ if uploaded_file is not None:
         col1, col2 = st.columns(2)
         with col1:
             st.header("Original")
-            st.image(test_img)
+            st.image(test_img, use_container_width=True)
         with col2:
             on_selection_change(test_img, options, selected, element_size, kernel_size)
         
