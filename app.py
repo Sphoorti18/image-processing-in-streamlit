@@ -26,7 +26,7 @@ img {
 # --- Sidebar for Mobile Settings ---
 st.sidebar.header("Mobile Optimization")
 enable_mobile_mode = st.sidebar.checkbox("Enhance visibility for Mobile", value=False)
-target_width = st.sidebar.slider("Rescale Width (lower = more pixelated)", 50, 800, 300)
+target_width = st.sidebar.slider("Rescale Width (lower = more pixelated)", 10, 50, 30)
 
 def erosion(test_img, element_size, kernel_size):
     global result
