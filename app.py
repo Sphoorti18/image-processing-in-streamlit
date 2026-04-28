@@ -147,7 +147,7 @@ if uploaded_file is not None:
     element_label = st.selectbox("Element Shape", list(element_shapes.keys()), index=0)
     element_size = element_shapes[element_label]
     #kernel slider
-    trackbar_val=st.slider("Kernel Size", min_value=0, max_value=12, value=0)
+    trackbar_val=st.slider("Kernel Size", min_value=0, max_value=50, value=0)
     kernel_size=trackbar_val*2+1
     st.caption(f"Actual kernel size: {kernel_size}x{kernel_size}")
                 
