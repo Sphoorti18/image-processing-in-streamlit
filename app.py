@@ -153,15 +153,6 @@ if uploaded_file is not None:
     test_img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)  # reads as BGR
     test_img = cv2.cvtColor(test_img, cv2.COLOR_BGR2RGB)   # convert to RGB
 
-    # --- INTEGRATED MOBILE RESIZE LOGIC ---
-    if enable_mobile_mode:
-        h, w = test_img.shape[:2]
-        aspect_ratio = h / w
-        target_height = int(target_width * aspect_ratio)
-        # Use INTER_NEAREST to keep those pixels sharp!
-        test_img = cv2.resize(test_img, (target_width, target_height), interpolation=cv2.INTER_NEAREST)
-        st.info(f"Mobile Optimization Active: Image resized to {target_width}px width.")
-
     options = ["Erosion", "Dilation", "Opening", "Closing", "Gradient"]
     selected = st.selectbox("Morphological Operations", options, index=0)
     #dictionary
