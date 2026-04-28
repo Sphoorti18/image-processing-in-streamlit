@@ -13,12 +13,23 @@ st.set_page_config(
 )
 st.markdown("""
 <style>
-img {
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
+/* Target all images and the canvas elements Streamlit uses */
+img, canvas {
+    image-rendering: -moz-crisp-edges;         /* Firefox */
+    image-rendering: -webkit-optimize-contrast; /* Safari/WebKit */
+    image-rendering: pixelated;                 /* Standard */
+    image-rendering: crisp-edges;               /* Modern browsers */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE */
+}
+
+/* Optional: Ensure images take up full width on small screens 
+   to prevent excessive downscaling which causes blurring */
+[data-testid="stImage"] {
+    width: 100% !important;
 }
 </style>
 """, unsafe_allow_html=True)
+
 def erosion(test_img, element_size, kernel_size):
     global result
     if element_size == 0:
