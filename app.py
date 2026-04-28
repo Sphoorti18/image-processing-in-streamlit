@@ -11,22 +11,6 @@ st.set_page_config(
     page_icon=img,
     layout="wide"
 )
-st.markdown("""
-<style>
-img {
-    image-rendering: -moz-crisp-edges;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
-    -ms-interpolation-mode: nearest-neighbor;
-}
-</style>
-""", unsafe_allow_html=True)
-
-# --- Sidebar for Mobile Settings ---
-st.sidebar.header("Mobile Optimization")
-#enable_mobile_mode = st.sidebar.checkbox("Enhance visibility for Mobile", value=False)
-target_width = st.sidebar.slider("Rescale Width (lower = more pixelated)", 10, 50, 30)
 
 def erosion(test_img, element_size, kernel_size):
     global result
@@ -118,10 +102,6 @@ with st.popover("INSTRUCTIONS"):
 
     st.write("**1. Upload an Image**")
     st.write("Click on 'Select Image File' and upload any image (JPG, JPEG, PNG, BMP). This will be your input image for processing.")
-    st.write("**2. Mobile Optimization (Sidebar)**")
-    st.write("If you are on a phone, tap the **'>>'** arrow at the top-left corner of the screen to open the sidebar.")
-    st.write("- **Rescale Width**: Lower values make the image more 'blocky' or pixelated, which is great for seeing how morphological operations work.")
-
     st.write("**2. Choose a Morphological Operation**")
     st.write("Select an operation like Erosion, Dilation, Opening, Closing, or Gradient. Each operation modifies the image differently (e.g., erosion shrinks objects, dilation expands them).")
 
@@ -137,12 +117,13 @@ with st.popover("INSTRUCTIONS"):
     st.write("- Smaller values → subtle changes")
     st.write("- Larger values → stronger effects")
     st.write("Actual kernel size is displayed below the slider.")
+    st.info("**📱 Note for Mobile Users:** Because phone screens have very high pixel density (PPI), you may need to use a **larger kernel value** (30-50) to see the same visual effect that appears at smaller values on a computer.")
 
     st.write("**5. Apply and Download Result**")
     st.write("Click 'Apply Operation' to process the image.")
     st.write("View original vs processed image side-by-side.")
-    st.write("Download the result in PNG format.")
-
+    st.write("Download your result as a PNG file. If you need a different format, you can use a free online converter or another app to change it.")
+    
 #Single Image file uploader 
 uploaded_file = st.file_uploader("Select Image File", type=["jpg", "jpeg", "png", "bmp"], accept_multiple_files=False)
 if uploaded_file is not None:
