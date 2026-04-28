@@ -126,9 +126,7 @@ with st.popover("INSTRUCTIONS"):
     
 #Single Image file uploader 
 uploaded_file = st.file_uploader("Select Image File", type=["jpg", "jpeg", "png", "bmp"], accept_multiple_files=False)
-if uploaded_file is None:
-    st.error("Please Select an Image File")
-else:
+if uploaded_file is not None:
     st.success(f"Selected: {uploaded_file.name}")
     # read image
     file_bytes = np.frombuffer(uploaded_file.read(), np.uint8)
@@ -163,6 +161,5 @@ else:
                 file_name=f"{selected.lower()}_result.png",
                 mime="image/png"
             )
-
 else:
     st.warning("Please upload a file first")
