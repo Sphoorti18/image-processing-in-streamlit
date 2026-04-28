@@ -13,22 +13,20 @@ st.set_page_config(
 )
 st.markdown("""
 <style>
-/* Target all images and the canvas elements Streamlit uses */
-img, canvas {
-    image-rendering: -moz-crisp-edges;         /* Firefox */
-    image-rendering: -webkit-optimize-contrast; /* Safari/WebKit */
-    image-rendering: pixelated;                 /* Standard */
-    image-rendering: crisp-edges;               /* Modern browsers */
-    -ms-interpolation-mode: nearest-neighbor;   /* IE */
-}
-
-/* Optional: Ensure images take up full width on small screens 
-   to prevent excessive downscaling which causes blurring */
-[data-testid="stImage"] {
-    width: 100% !important;
+img {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
 }
 </style>
 """, unsafe_allow_html=True)
+
+# --- Sidebar for Mobile Settings ---
+st.sidebar.header("Mobile Optimization")
+enable_mobile_mode = st.sidebar.checkbox("Enhance visibility for Mobile", value=False)
+target_width = st.sidebar.slider("Rescale Width (lower = more pixelated)", 100, 800, 300)
 
 def erosion(test_img, element_size, kernel_size):
     global result
