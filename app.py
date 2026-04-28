@@ -126,7 +126,10 @@ with st.popover("INSTRUCTIONS"):
     
 #Single Image file uploader 
 uploaded_file = st.file_uploader("Select Image File", type=["jpg", "jpeg", "png", "bmp"], accept_multiple_files=False)
-if uploaded_file is not None:
+if uploaded_file == None:
+    st.error("Please Select an Image File")
+    
+else:
     st.success(f"Selected: {uploaded_file.name}")
     # read image
     file_bytes = np.frombuffer(uploaded_file.read(), np.uint8)
