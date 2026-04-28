@@ -11,6 +11,14 @@ st.set_page_config(
     page_icon=img,
     layout="wide"
 )
+st.markdown("""
+<style>
+img {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+</style>
+""", unsafe_allow_html=True)
 def erosion(test_img, element_size, kernel_size):
     global result
     if element_size == 0:
