@@ -118,6 +118,10 @@ with st.popover("INSTRUCTIONS"):
 
     st.write("**1. Upload an Image**")
     st.write("Click on 'Select Image File' and upload any image (JPG, JPEG, PNG, BMP). This will be your input image for processing.")
+    st.write("**2. Mobile Optimization (Sidebar)**")
+    st.write("If you are on a phone, the pixels might look too small to see the changes. Use the sidebar tools:")
+    st.write("- **Enable Mobile Mode**: Shrinks the image so individual pixels become larger and easier to see.")
+    st.write("- **Rescale Width**: Lower values make the image more 'blocky' or pixelated, which is great for seeing how morphological operations work.")
 
     st.write("**2. Choose a Morphological Operation**")
     st.write("Select an operation like Erosion, Dilation, Opening, Closing, or Gradient. Each operation modifies the image differently (e.g., erosion shrinks objects, dilation expands them).")
