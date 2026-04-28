@@ -158,22 +158,7 @@ if uploaded_file is not None:
             st.image(test_img, width="stretch")
         with col2:
             on_selection_change(test_img, options, selected, element_size, kernel_size)
-        st.subheader("Zoomed Comparison (Center Crop)")
-        h, w = test_img.shape[:2]
-        cy, cx = h//2, w//2
-        size = 100  # crop 100x100 patch from center
-    
-        original_crop = test_img[cy-size:cy+size, cx-size:cx+size]
-        result_crop = result[cy-size:cy+size, cx-size:cx+size]
-    
-        z1, z2 = st.columns(2)
-        with z1:
-            st.caption("Original (zoomed)")
-            st.image(original_crop, width="stretch")
-        with z2:
-            st.caption("Result (zoomed)")
-            st.image(result_crop, width="stretch")
-        
+       
         result_pil = Image.fromarray(result)
         buf = io.BytesIO()
         result_pil.save(buf, format="PNG")
